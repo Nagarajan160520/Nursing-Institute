@@ -165,8 +165,8 @@ const CourseDetails = () => {
                     
                     {course.syllabus?.pdfUrl && (
                       <div className="mt-4">
-                        <Button 
-                          href={`http://localhost:5000${course.syllabus.pdfUrl}`} 
+                        <Button
+                          href={`${(process.env.REACT_APP_API_URL || 'http://localhost:5000/api').replace('/api', '')}${course.syllabus.pdfUrl}`}
                           target="_blank"
                           variant="outline-primary"
                           className="d-inline-flex align-items-center"

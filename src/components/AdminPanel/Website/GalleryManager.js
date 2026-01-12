@@ -178,10 +178,10 @@ const GalleryManager = () => {
             <Card className="border-0 shadow-sm h-100">
               <div className="position-relative" style={{ height: '200px', overflow: 'hidden' }}>
                 <Image
-                  src={`http://localhost:5000${item.imageUrl}`}
+                  src={`${(process.env.REACT_APP_API_URL || 'http://localhost:5000/api').replace('/api', '')}${item.imageUrl}`}
                   alt={item.title}
                   className="card-img-top"
-                  style={{ 
+                  style={{
                     objectFit: 'cover',
                     height: '100%',
                     width: '100%'
