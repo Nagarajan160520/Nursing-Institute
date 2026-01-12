@@ -4,6 +4,20 @@ import { Link } from 'react-router-dom';
 import { FaImages, FaArrowRight, FaCamera } from 'react-icons/fa';
 import api from '../../../services/api';
 
+// Helper function to construct full image URL
+const getImageUrl = (imageUrl) => {
+  if (!imageUrl) return 'https://nursing-backend-60bw.onrender.com/uploads/default-gallery.jpg';
+
+  // If it's already a full URL (Cloudinary), return as is
+  if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+    return imageUrl;
+  }
+
+  // For relative URLs, construct full URL using backend base URL (without /api)
+  const baseUrl = (process.env.REACT_APP_API_URL || 'https://nursing-backend-60bw.onrender.com/api').replace('/api', '');
+  return `${baseUrl}${imageUrl}`;
+};
+
 const GalleryPreview = () => {
   const [galleryItems, setGalleryItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -212,7 +226,7 @@ const GalleryPreview = () => {
                   }}
                 >
                   <img
-                    src={item.imageUrl}
+                    src={getImageUrl(item.imageUrl)}
                     alt={item.title}
                     style={{
                       width: '100%',
