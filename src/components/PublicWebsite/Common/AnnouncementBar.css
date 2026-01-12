@@ -1,0 +1,54 @@
+.announcement-bar {
+  background: linear-gradient(90deg, #2c3e50, #3498db);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.announcement-text {
+  font-weight: 500;
+}
+
+.announcement-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.announcement-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.announcement-dot.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+.announcement-dot:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .announcement-bar {
+    font-size: 0.8rem;
+  }
+  
+  .announcement-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}

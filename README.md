@@ -45,6 +45,38 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+---
+
+## Real-time updates (Student Portal)
+
+This project includes real-time updates for the Student Portal using Socket.IO. When Admin performs actions such as uploading study material, recording attendance, or publishing marks, the backend emits socket events and the Student UI refreshes automatically.
+
+Quick notes:
+- Backend Socket.IO is initialized in `backend/server.js` and attaches to the same HTTP server.
+- The Student layout (`src/components/StudentPortal/Layout/StudentLayout.js`) connects with the JWT token and listens for events: `downloads:created`, `attendance:changed`, `marks:added`, `marks:published`, `marks:updated`.
+- Student pages re-fetch relevant data on `CustomEvent`s dispatched from the layout: `realtime:downloads`, `realtime:attendance`, `realtime:marks`, `realtime:profile`.
+
+### Local setup for real-time
+
+1. Install socket packages:
+   - Backend: `cd backend && npm install socket.io`
+   - Frontend: `cd frontend && npm install socket.io-client`
+2. Restart both frontend and backend dev servers.
+
+### Running tests
+
+We added unit tests to cover socket integration and the attendance refresh behavior.
+
+- Run frontend tests:
+  - `cd frontend && npm test`
+
+Files added:
+- `src/__tests__/StudentLayout.socket.test.js` — Verifies socket connect and that events dispatch `CustomEvent`s and show toasts.
+- `src/__tests__/Attendance.realtime.test.js` — Verifies Attendance refetches when a realtime event is dispatched.
+
+---
+
+
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
