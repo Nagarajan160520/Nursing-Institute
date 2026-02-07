@@ -755,7 +755,7 @@ const Login = ({ admin = false }) => {
                           >
                             Forgot Password?
                           </Link> */}
-                          <Link 
+                          {/*<Link 
                             to="/admin-login" 
                             style={styles.link}
                             onMouseEnter={(e) => {
@@ -768,7 +768,7 @@ const Login = ({ admin = false }) => {
                             }}
                           >
                             Admin Login →
-                          </Link>
+                          </Link>*/}
                         </>
                       )}
                     </div>
