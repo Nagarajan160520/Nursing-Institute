@@ -672,7 +672,7 @@ const Admission = () => {
                     Limited seats available for 2024-25 batch!
                   </p>
                   <div className="d-flex flex-wrap gap-3">
-                    <Button 
+                    {/*<Button 
                       as="a" 
                       href="#" 
                       variant="light" 
@@ -687,7 +687,7 @@ const Admission = () => {
                     >
                       <FaArrowRight className="me-2" />
                       Apply Online Now
-                    </Button>
+                    </Button> */}
                     <Button 
                       as={Link} 
                       to="/contact" 

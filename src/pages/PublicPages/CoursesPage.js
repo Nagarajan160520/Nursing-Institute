@@ -19,7 +19,6 @@ const CoursesPage = () => {
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     fetchCourses();
@@ -27,7 +26,7 @@ const CoursesPage = () => {
 
   useEffect(() => {
     filterCourses();
-  }, [searchTerm, selectedCategory, courses]);
+  }, [searchTerm, courses]);
 
   const fetchCourses = async () => {
     try {
@@ -54,24 +53,8 @@ const CoursesPage = () => {
       );
     }
 
-    // Category filter
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(course =>
-        course.courseName.toLowerCase().includes(selectedCategory.toLowerCase())
-      );
-    }
-
     setFilteredCourses(filtered);
   };
-
-  const courseCategories = [
-    { value: 'all', label: 'All Courses' },
-    { value: 'gnm', label: 'General Nursing' },
-    { value: 'anm', label: 'Auxiliary Nursing' },
-    { value: 'bsc', label: 'B.Sc Nursing' },
-    { value: 'msc', label: 'M.Sc Nursing' },
-    { value: 'post', label: 'Post Basic' }
-  ];
 
   if (loading) {
     return (
@@ -101,9 +84,9 @@ const CoursesPage = () => {
         </Col>
       </Row>
 
-      {/* Search and Filter */}
+      {/* Search Filter */}
       <Row className="mb-5">
-        <Col lg={8} className="mb-3 mb-lg-0">
+        <Col lg={12}>
           <InputGroup>
             <InputGroup.Text>
               <FaSearch />
@@ -115,18 +98,6 @@ const CoursesPage = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </InputGroup>
-        </Col>
-        <Col lg={4}>
-          <Form.Select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            {courseCategories.map(category => (
-              <option key={category.value} value={category.value}>
-                {category.label}
-              </option>
-            ))}
-          </Form.Select>
         </Col>
       </Row>
 
@@ -142,7 +113,7 @@ const CoursesPage = () => {
       ) : (
         <div className="text-center py-5">
           <h4 className="text-muted mb-3">No courses found</h4>
-          <p className="text-muted">Try adjusting your search or filter criteria</p>
+          <p className="text-muted">Try adjusting your search criteria</p>
         </div>
       )}
 
@@ -242,7 +213,7 @@ const CourseCard = ({ course }) => {
           )}
         </div>
 
-        <div className="d-grid gap-2">
+        {/*<div className="d-grid gap-2">
           <Button 
             as={Link} 
             to={`/courses/${course._id}`} 
@@ -259,7 +230,7 @@ const CourseCard = ({ course }) => {
             <FaStethoscope className="me-2" />
             Apply Now
           </Button>
-        </div>
+        </div> */}
       </Card.Body>
     </Card>
   );

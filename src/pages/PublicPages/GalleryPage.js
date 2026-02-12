@@ -200,7 +200,7 @@ const GalleryPage = () => {
                 </Form.Select>
               </Form.Group>
             </Col>
-            <Col md={3}>
+            {/*<Col md={3}>
               <Form.Group>
                 <Form.Label>Album</Form.Label>
                 <Form.Select
@@ -215,7 +215,7 @@ const GalleryPage = () => {
                   ))}
                 </Form.Select>
               </Form.Group>
-            </Col>
+            </Col> */} 
             <Col md={2}>
               <Button variant="outline-secondary" onClick={resetFilters} className="w-100">
                 Reset Filters
@@ -288,14 +288,14 @@ const GalleryPage = () => {
                         <FaEye className="me-1" />
                         {item.views || 0}
                       </span>
-                      <span>
+                      {/*<span>
                         <FaThumbsUp className="me-1" />
                         {item.likesCount || 0}
                       </span>
                       <span>
                         <FaComment className="me-1" />
                         {item.commentsCount || 0}
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                 </Card.Body>
@@ -425,12 +425,12 @@ const GalleryPage = () => {
                       <li className="mb-2">
                         <strong>Views:</strong> {selectedImage.views || 0}
                       </li>
-                      <li className="mb-2">
+                     {/* <li className="mb-2">
                         <strong>Likes:</strong> {selectedImage.likesCount || 0}
                       </li>
                       <li>
                         <strong>Comments:</strong> {selectedImage.commentsCount || 0}
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </Col>
@@ -440,10 +440,10 @@ const GalleryPage = () => {
               <Button variant="secondary" onClick={() => setShowModal(false)}>
                 Close
               </Button>
-              <Button variant="primary">
+             {/* <Button variant="primary">
                 <FaThumbsUp className="me-2" />
                 Like Image
-              </Button>
+              </Button> */}
             </Modal.Footer>
           </>
         )}
